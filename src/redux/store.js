@@ -5,4 +5,8 @@ import rootReduces from './reducers'
 const initailState = {};
 const middleware = [thunk]
 
-export const store = createStore(rootReduces, initailState, applyMiddleware(...middleware))
+export const store = createStore(
+  rootReduces,
+  initailState,
+  applyMiddleware(...middleware)
+)
