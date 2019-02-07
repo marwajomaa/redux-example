@@ -49,7 +49,7 @@ const mapStateToProps = state =>({
 
 export default connect(mapStateToProps, { fetchPosts })(Posts);
 
-//summrey
+//summery
 //when call fetchPosts as action creator it's call the fetchPosts action
 //when the action is called it's fetching and dispatching the type and payload to the reducer
 //reducer return the state with the items has been fetch (which is items)
