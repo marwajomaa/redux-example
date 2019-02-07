@@ -5,14 +5,17 @@ import {fetchPosts} from '../redux/actions/postsAction';
 
 class Posts extends Component {
  componentWillMount(){
+   //call action
    this.props.fetchPosts()
  }
 
  componentWillReceiveProps(nextProps){
+   //whenever receive new props fire this method
    if(nextProps.newPost){
      this.props.posts.unshift(nextProps.newPost)
    }
  }
+
   render(){
     const { posts } = this.props;
     console.log(posts);
@@ -46,7 +49,7 @@ const mapStateToProps = state =>({
 
 export default connect(mapStateToProps, { fetchPosts })(Posts);
 
-//summrey
+//summery
 //when call fetchPosts as action creator it's call the fetchPosts action
 //when the action is called it's fetching and dispatching the type and payload to the reducer
 //reducer return the state with the items has been fetch (which is items)
