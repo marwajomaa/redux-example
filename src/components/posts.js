@@ -5,14 +5,17 @@ import {fetchPosts} from '../redux/actions/postsAction';
 
 class Posts extends Component {
  componentWillMount(){
+   //call action
    this.props.fetchPosts()
  }
 
  componentWillReceiveProps(nextProps){
+   //whenever receive new props fire this method
    if(nextProps.newPost){
      this.props.posts.unshift(nextProps.newPost)
    }
  }
+
   render(){
     const { posts } = this.props;
     console.log(posts);
