@@ -1,15 +1,16 @@
 import React, {Component} from 'react'
 
 class Posts extends Component {
-  state = {
-   posts: []
-  }
-
-  componentDidMount(){
-    fetch('https://jsonplaceholder.typicode.com/posts')
-    .then(res=>res.json())
-    .then(posts=>this.setState({posts}))
-  }
+  //remove state and fetch when using redux
+  // state = {
+  //  posts: []
+  // }
+  //
+  // componentDidMount(){
+  //   fetch('https://jsonplaceholder.typicode.com/posts')
+  //   .then(res=>res.json())
+  //   .then(posts=>this.setState({posts}))
+  // }
 
   render(){
     const { posts } = this.state;
