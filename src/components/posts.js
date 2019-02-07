@@ -38,3 +38,10 @@ const mapStateToProps = state =>({
 })
 
 export default connect(mapStateToProps, { fetchPosts })(Posts);
+
+//summrey
+//when call fetchPosts as action creator it's call the fetchPosts action
+//when the action is called it's fetching and dispatching the type and payload to the reducer
+//reducer return the state with the items has been fetch (which is items)
+//in Posts components we have to get the items from the state using mapStateToProps(get the state from redux)
+//using the items from state as props then map it in the component
