@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createPost } from '../redux/actions/postsAction'
 
 class PostForm extends Component {
   state={
+    title:'',
+    body:''
   }
 
   handleChange =(e)=>{
@@ -18,16 +23,9 @@ class PostForm extends Component {
     }
 
     //add the new post to the jsonplaceholder array
+   //call action
+   this.props.createPost(post)
 
-    fetch('https://jsonplaceholder.typicode.com/posts', {
-      method:'POST',
-      headers:{
-      'content-type':'application-json'
-     },
-     body:JSON.stringify(post)
-    })
-    .then(res=>res.json())
-    .then(data=>console.log(data,'heeeeeee'))
   }
 
   render() {
@@ -46,4 +44,8 @@ class PostForm extends Component {
   }
 }
 
-export default PostForm;
+PostForm.propTypes={
+  createPost: PropTypes.func.isRequired,
+}
+
+export default connect(null, {createPost})(PostForm);

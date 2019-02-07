@@ -1,11 +1,17 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import fetchPosts from '../redux/actions/postsAction';
+import {fetchPosts} from '../redux/actions/postsAction';
 
 class Posts extends Component {
  componentWillMount(){
    this.props.fetchPosts()
+ }
+
+ componentWillReceiveProps(nextProps){
+   if(nextProps.newPost){
+     this.props.posts.unshift(nextProps.newPost)
+   }
  }
   render(){
     const { posts } = this.props;
@@ -34,7 +40,8 @@ Posts.propTypes={
 const mapStateToProps = state =>({
   //take the posts from rootReduces state and take items from postReducer then assign it to posts key
   //we can access to the posts as props in our component
-  posts:state.posts.items
+  posts:state.posts.items,
+  newPost:state.posts.item
 })
 
 export default connect(mapStateToProps, { fetchPosts })(Posts);
